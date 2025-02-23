@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Form Properties & Methods</title>
+</head>
+<body>
+
+    <h2>JavaScript Form Example</h2>
+
+    <!-- Form -->
+    <form id="myForm" name="myForm" action="/submit" method="POST">
+        <label>Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female<br><br>
+
+        <label>Choose a Fruit:</label>
+        <select id="fruitSelect">
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="orange">Orange</option>
+        </select><br><br>
+
+        <label>Comments:</label>
+        <textarea id="comments" name="comments"></textarea><br><br>
+
+        <button type="submit">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <script>
+        // Get form reference
+        let form = document.getElementById("myForm");
+
+        // Display form properties
+        console.log("Form Action:", form.action);
+        console.log("Form Method:", form.method);
+
+        // Handle form submission
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Access form elements
+            let username = form.username.value;
+            let password = form.password.value;
+            let selectedGender = document.querySelector('input[name="gender"]:checked');
+            let selectedFruit = form.fruitSelect.value;
+            let comments = form.comments.value;
+
+            // Validate form
+            if (!username || !password || !selectedGender) {
+                alert("Please fill in all required fields!");
+                return;
+            }
+
+            // Display form values
+            console.log("Username:", username);
+            console.log("Password:", password);
+            console.log("Gender:", selectedGender.value);
+            console.log("Selected Fruit:", selectedFruit);
+            console.log("Comments:", comments);
+
+            alert("Form submitted successfully!");
+        });
+
+        // Reset form function
+        function resetForm() {
+            form.reset(); // Reset all fields to default values
+        }
+
+        // Change selected fruit dynamically
+        form.fruitSelect.value = "banana"; // Sets "Banana" as the selected option
+    </script>
+
+</body>
+</html>

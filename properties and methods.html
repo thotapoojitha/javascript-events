@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Properties and Methods</title>
+</head>
+<body>
+
+    <h2>Form Properties and Methods in JavaScript</h2>
+
+    <form id="myForm" name="userForm" action="submit.php" method="POST" target="_self">
+        <label for="username">Name:</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+        <button type="button" id="resetBtn">Reset</button>
+        <button type="button" id="checkValidityBtn">Check Validity</button>
+    </form>
+
+    <script>
+        // Access the form using document.forms
+        let form = document.forms["userForm"];
+
+        // Logging form properties
+        console.log("📌 Form Name:", form.name);
+        console.log("📌 Form Action:", form.action);
+        console.log("📌 Form Method:", form.method);
+        console.log("📌 Form Target:", form.target);
+        console.log("📌 Number of Elements in Form:", form.length);
+
+        // Accessing form elements
+        console.log("📌 Username Input:", form.elements["username"]);
+        console.log("📌 Email Input:", form.elements["email"]);
+        console.log("📌 Age Input:", form.elements["age"]);
+
+        // Change form properties dynamically
+        form.action = "https://example.com/submit";
+        form.method = "GET";
+        form.target = "_blank"; // Open in new tab
+        console.log("✅ Form Action Updated:", form.action);
+        console.log("✅ Form Method Updated:", form.method);
+        console.log("✅ Form Target Updated:", form.target);
+
+        // Reset form on button click
+        document.getElementById("resetBtn").addEventListener("click", function() {
+            form.reset(); // Reset all fields
+            console.log("🔄 Form Reset!");
+        });
+
+        // Check form validity
+        document.getElementById("checkValidityBtn").addEventListener("click", function() {
+            if (form.checkValidity()) {
+                console.log("✅ Form is Valid!");
+            } else {
+                console.log("❌ Form is Invalid!");
+                form.reportValidity(); // Show validation messages
+            }
+        });
+
+        // Handle form submission
+        form.addEventListener("submit", function(event) {
+            if (!form.checkValidity()) {
+                console.log("⚠️ Form has invalid fields, submission blocked!");
+                event.preventDefault(); // Prevent submission if invalid
+            } else {
+                console.log("✅ Form Submitted Successfully!");
+            }
+        });
+
+    </script>
+
+</body>
+</html>

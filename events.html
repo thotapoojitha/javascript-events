@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> div{
+        height:100px;
+        width:100px;
+        background-color: pink;
+        border: 1px solid black;
+    }</style>
+   </head>
+<body>
+    <button onclick="console.log('button was clicked')">click me</button>
+    <button ondblclick="console.log('button was clicked')">double click</button>
+    <div onmouseover="console.log('you are on div')">
+        this is a box
+    </div>
+
+    <div class="box" id="box">
+        Click & Hold
+    </div>
+   
+    <script>
+        let box = document.getElementById("box");
+
+        // Mousedown event (when mouse button is pressed)
+        box.addEventListener("mousedown", () => {
+            box.style.backgroundColor = "red";
+            box.textContent = "Mouse Down!";
+            console.log("Mouse button pressed on the box!");
+        });
+
+        // Mouseup event (when mouse button is released)
+        box.addEventListener("mouseup", () => {
+            box.style.backgroundColor = "green";
+            box.textContent = "Mouse Up!";
+            console.log("Mouse button released from the box!");
+        });
+    </script>
+
+</body>
+</html>

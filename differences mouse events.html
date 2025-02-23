@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseEnter vs MouseOver</title>
+    <style>
+        #parent {
+            width: 250px;
+            height: 150px;
+            background-color: lightgray;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 150px;
+            font-size: 18px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        #child {
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 10px;
+            left: 75px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Move your mouse over the boxes and check the console</h2>
+
+    <div id="parent">
+        Parent Box
+        <div id="child">Child Box</div>
+    </div>
+
+    <script>
+        const parent = document.getElementById("parent");
+
+        parent.addEventListener("mouseenter", () => {
+            console.log("🟢 MOUSEENTER: Entered PARENT (Ignores child)");
+        });
+
+        parent.addEventListener("mouseover", () => {
+            console.log("🔵 MOUSEOVER: Entered PARENT or CHILD");
+        });
+
+    </script>
+
+</body>
+</html>

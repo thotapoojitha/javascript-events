@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events Demo</title>
+    <style>
+        #parent {
+            width: 250px;
+            height: 150px;
+            background-color: lightgray;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 150px;
+            font-size: 18px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        #child {
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 10px;
+            left: 75px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Move your mouse and check the console</h2>
+
+    <div id="parent">
+        Parent Box
+        <div id="child">Child Box</div>
+    </div>
+
+    <script>
+        const parent = document.getElementById("parent");
+        const child = document.getElementById("child");
+
+        // 🟢 MOUSEENTER / MOUSELEAVE (Ignores child elements)
+        parent.addEventListener("mouseenter", () => {
+            console.log("🟢 MOUSEENTER: Entered PARENT (Ignores child)");
+        });
+
+        parent.addEventListener("mouseleave", () => {
+            console.log("🔴 MOUSELEAVE: Left PARENT (Ignores child)");
+        });
+
+        // 🔵 MOUSEOVER / MOUSEOUT (Triggers on parent and child)
+        parent.addEventListener("mouseover", (e) => {
+            console.log(`🔵 MOUSEOVER: Entered ${e.target.id}`);
+        });
+
+        parent.addEventListener("mouseout", (e) => {
+            console.log(`🟡 MOUSEOUT: Left ${e.target.id}`);
+        });
+
+        // Mouse events for the child to track movement separately
+        child.addEventListener("mouseover", () => {
+            console.log("🔵 MOUSEOVER: Entered CHILD");
+        });
+
+        child.addEventListener("mouseout", () => {
+            console.log("🟡 MOUSEOUT: Left CHILD");
+        });
+
+    </script>
+
+</body>
+</html>

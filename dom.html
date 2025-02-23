@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Click the button to display the cookies associated with this document.</p>
+
+<button onclick="setCookie()">Set Cookie</button>
+<button onclick="getCookie()">Get Cookie</button>
+
+<script>
+function setCookie() {
+  document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/";
+  alert("Cookie has been set!");
+}
+
+function getCookie() {
+  let cookies = document.cookie;
+  document.getElementById("demo").innerHTML = "Cookies associated with this document: " + (cookies ? cookies : "No cookies found");
+}
+console.log(document.lastModified);
+</script>
+
+</body>
+</html>
